@@ -55,15 +55,15 @@ def process_image(filename):
 
 
 if __name__ == "__main__":
-  tiff_pattern = re.compile(".*\.tif+")
-  if len(sys.argv) > 1: # no arguments, we take current directory
-    dirname = sys.argv[1]
+  tiff_pattern = re.compile(".*\.tif+") # look for .tif and .tiff files
+  if len(sys.argv) > 1: 
+    dirname = sys.argv[1] # take the first argument
   else:
-    dirname = "."
+    dirname = "." # no arguments, take current directory
   brto = -1 #original vlaues of brightness and contrast
   cnto = -1
   group_index = 0
-  grpzero = 0 # if group contains possible negatoive values
+  grpzero = 0 # if group contains possible negative values
   for fn in sorted(os.listdir(dirname)): # list must be sorted of it can be shuffled by the OS
     if tiff_pattern.match(fn):
       [brt, cnt, minval] = process_image(os.path.join(dirname,fn)) # process image and get the results
