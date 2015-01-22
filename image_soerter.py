@@ -12,6 +12,6 @@ if __name__ == "__main__":
   else:
     dirname = "."
   for fn in os.listdir(dirname):
-    print fn
+    print os.join(dirname,fn)
 
 
