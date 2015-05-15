@@ -40,7 +40,7 @@ def process_image(filename):
   f = open(filename) # open as a text file to read the headers
   brt = -1 # set both to -1 to spot changes at exit condition
   cnt = -1
-  re_brt = re.compile("^Brightness.*=") # compile RegExes
+  re_brt = re.compile("^Brightness.*=") # compile regular expressions
   re_cnt = re.compile("^Contrast.*=")
   for l in f: # read lines form file
     if re_brt.match(l): #brightness
@@ -79,9 +79,9 @@ if __name__ == "__main__":
         grpzero = 0 # still no negatives in the new group
       if change == 1:
         print "# ------------------------------------------" # separator comment
-        print "mkdir group_%03d" % group_index # new directory/folder
+        print "mkdir group_%03d" % group_index # make new directory/folder
       print "ln -sf \"%s\" group_%03d/ #%f, %f, %d" % (os.path.join(dirname,fn), group_index, brt, cnt, minval)
-      if grpzero == 0 and minval == 0: # possible negative values found and still not indicated
+      if grpzero == 0 and minval == 0: # possible negative (and yet unindicated) values found
         print "echo ZERO > group_%03d/ATTENTION_POSSIBLE_NEGATIVE_VALUES.txt" % group_index
         grpzero = 1 
 
